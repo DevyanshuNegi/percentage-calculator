@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responsive percentage calculator for top 5 subjects out of 100 marks." />
+  <meta name="keywords" content="percentage calculator, marks, student tool, responsive calculator" />
+  <meta name="author" content="Your Name" />
+  <title>Top 5 Subjects Percentage Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f5f8fa;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+      text-align: center;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      background: #007BFF;
+      color: white;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #222;
+    }
+    @media (max-width: 500px) {
+      form {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Percentage Calculator (Top 5 Subjects)</h1>
+  <form id="percentageForm" onsubmit="calculatePercentage(event)">
+    <label for="marks1">Subject 1 Marks:</label>
+    <input type="number" id="marks1" max="100" min="0" required />
+    <label for="marks2">Subject 2 Marks:</label>
+    <input type="number" id="marks2" max="100" min="0" required />
+    <label for="marks3">Subject 3 Marks:</label>
+    <input type="number" id="marks3" max="100" min="0" required />
+    <label for="marks4">Subject 4 Marks:</label>
+    <input type="number" id="marks4" max="100" min="0" required />
+    <label for="marks5">Subject 5 Marks:</label>
+    <input type="number" id="marks5" max="100" min="0" required />
+    <button type="submit">Calculate Percentage</button>
+    <div class="result" id="result"></div>
+  </form>
+
+  <script>
+    function calculatePercentage(event) {
+      event.preventDefault();
+      const marks = [
+        +document.getElementById("marks1").value,
+        +document.getElementById("marks2").value,
+        +document.getElementById("marks3").value,
+        +document.getElementById("marks4").value,
+        +document.getElementById("marks5").value,
+      ];
+      const total = marks.reduce((sum, m) => sum + m, 0);
+      const percentage = (total / 500) * 100;
+      document.getElementById("result").innerText = `Total: ${total}/500\nPercentage: ${percentage.toFixed(2)}%`;
+    }
+  </script>
+</body>
+</html>
